@@ -1,0 +1,353 @@
+<!DOCTYPE html>
+<html lang="pt-ao">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JSAG TECH | Software de Gestão e Marketing Digital</title>
+    
+    <!-- Fonts & Icons -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Animate.css para efeitos rápidos -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
+
+    <style>
+        :root {
+            --primary: #003366;
+            --secondary: #00a8cc;
+            --accent: #00d2ff;
+            --dark: #050a14;
+            --light: #f4f7f6;
+            --white: #ffffff;
+            --agt-gold: #c5a059;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Poppins', sans-serif; }
+        body { background-color: var(--light); color: var(--dark); overflow-x: hidden; scroll-behavior: smooth; }
+
+        /* --- Header & Navigation --- */
+        header {
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            padding: 15px 8%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+        }
+
+        .logo img { height: 50px; transition: 0.3s; }
+        .logo img:hover { transform: scale(1.05); }
+
+        nav ul { display: flex; list-style: none; gap: 25px; align-items: center; }
+        nav ul li a { 
+            text-decoration: none; 
+            color: var(--primary); 
+            font-weight: 600; 
+            font-size: 0.9rem;
+            transition: 0.3s;
+        }
+        nav ul li a:hover { color: var(--secondary); }
+        
+        .nav-extra { 
+            background: var(--primary); 
+            color: white !important; 
+            padding: 8px 15px; 
+            border-radius: 5px; 
+        }
+
+        /* --- Hero Section com Efeito Zoom --- */
+        .hero {
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            color: white;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero-bg {
+            position: absolute;
+            top: 0; left: 0; width: 100%; height: 100%;
+            background: linear-gradient(rgba(5, 10, 20, 0.8), rgba(5, 10, 20, 0.7)), 
+                        url('https://images.unsplash.com/photo-1551434678-e076c223a692?auto=format&fit=crop&q=80&w=2070');
+            background-size: cover;
+            background-position: center;
+            z-index: -1;
+            animation: zoomInfinite 20s infinite alternate;
+        }
+
+        @keyframes zoomInfinite {
+            from { transform: scale(1); }
+            to { transform: scale(1.2); }
+        }
+
+        .hero-content h1 { font-size: 3.5rem; font-weight: 800; line-height: 1.1; margin-bottom: 20px; }
+        .hero-content p { font-size: 1.2rem; margin-bottom: 35px; opacity: 0.9; max-width: 800px; margin-left: auto; margin-right: auto;}
+        
+        .agt-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            background: rgba(255,255,255,0.1);
+            padding: 10px 20px;
+            border-radius: 50px;
+            border: 1px solid var(--secondary);
+            margin-bottom: 20px;
+            backdrop-filter: blur(5px);
+        }
+
+        /* --- Seção de Serviços Mães (Grid Criativo) --- */
+        .services { padding: 100px 8%; background: var(--white); }
+        .section-header { text-align: center; margin-bottom: 60px; }
+        .section-header h2 { font-size: 2.5rem; color: var(--primary); margin-bottom: 10px; }
+        .section-header div { width: 80px; height: 4px; background: var(--secondary); margin: 0 auto; }
+
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+
+        .s-card {
+            background: var(--light);
+            padding: 40px;
+            border-radius: 20px;
+            transition: 0.5s;
+            position: relative;
+            overflow: hidden;
+            border-bottom: 5px solid transparent;
+        }
+
+        .s-card:hover {
+            transform: translateY(-15px);
+            background: var(--white);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+            border-bottom: 5px solid var(--secondary);
+        }
+
+        .s-card i { font-size: 3rem; color: var(--secondary); margin-bottom: 20px; display: block; }
+        .s-card h3 { margin-bottom: 15px; color: var(--primary); }
+
+        /* --- Destaque Anúncios (Serviço Extra) --- */
+        .extra-promo {
+            background: var(--dark);
+            padding: 80px 8%;
+            color: white;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 50px;
+            flex-wrap: wrap;
+        }
+
+        .extra-text { flex: 1; min-width: 300px; }
+        .extra-text h2 { font-size: 2.2rem; margin-bottom: 20px; color: var(--accent); }
+        .extra-img { flex: 1; min-width: 300px; position: relative; }
+        .extra-img img { width: 100%; border-radius: 15px; box-shadow: 0 0 30px var(--secondary); }
+
+        .btn-main {
+            background: var(--secondary);
+            color: white;
+            padding: 15px 35px;
+            text-decoration: none;
+            border-radius: 50px;
+            font-weight: 700;
+            display: inline-block;
+            transition: 0.3s;
+            border: none;
+            cursor: pointer;
+        }
+        .btn-main:hover { background: var(--accent); transform: scale(1.05); }
+
+        /* --- Selos e Prova Social --- */
+        .trust-bar {
+            padding: 50px 8%;
+            background: #e9ecef;
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 30px;
+        }
+        .trust-item { text-align: center; opacity: 0.7; transition: 0.3s; }
+        .trust-item:hover { opacity: 1; }
+        .trust-item img { height: 60px; filter: grayscale(100%); transition: 0.3s; }
+        .trust-item:hover img { filter: grayscale(0%); }
+
+        /* --- Footer --- */
+        footer { background: var(--dark); color: white; padding: 80px 8% 20px; }
+        .footer-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 40px; margin-bottom: 50px; }
+        .footer-col h4 { margin-bottom: 20px; color: var(--secondary); }
+        .footer-col p { opacity: 0.7; margin-bottom: 10px; }
+
+        .whatsapp-float {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            background: #25d366;
+            width: 65px; height: 65px;
+            border-radius: 50%;
+            display: flex; align-items: center; justify-content: center;
+            font-size: 35px; color: white;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.3);
+            z-index: 2000;
+            transition: 0.3s;
+        }
+
+        /* Revelação no Scroll */
+        .reveal { opacity: 0; transform: translateY(30px); transition: 1s all ease; }
+        .reveal.active { opacity: 1; transform: translateY(0); }
+
+        @media (max-width: 768px) {
+            .hero-content h1 { font-size: 2.2rem; }
+            header { padding: 10px 5%; }
+            nav { display: none; } /* Pode ser adaptado para menu hambúrguer */
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="logo">
+            <img src="https://i.ibb.co/3s6p4mY/JSAG-TECH-LOGO.png" alt="JSAG TECH">
+        </div>
+        <nav>
+            <ul>
+                <li><a href="#home">Início</a></li>
+                <li><a href="#servicos">Software</a></li>
+                <li><a href="https://apexia-oficcial.github.io/Servi-os-de-anuncios/" target="_blank" class="nav-extra">Gestão de Anúncios</a></li>
+                <li><a href="#contato">Contatos</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- HERO -->
+    <section class="hero" id="home">
+        <div class="hero-bg"></div>
+        <div class="hero-content animate__animated animate__fadeInUp">
+            <div class="agt-badge">
+                <i class="fas fa-shield-check"></i>
+                <span>Licenciado pela AGT nº FE/8/AGT/2025</span>
+            </div>
+            <h1>Tecnologia Inteligente para<br><span style="color: var(--secondary);">Modernizar o seu Negócio</span></h1>
+            <p>Especialistas em softwares de faturação certificados e estratégias digitais de alto impacto em Angola.</p>
+            <div style="display: flex; gap: 20px; justify-content: center; flex-wrap: wrap;">
+                <a href="#servicos" class="btn-main">Nossos Softwares</a>
+                <a href="https://wa.me/244931352915" class="btn-main" style="background: transparent; border: 2px solid white;">Falar com Consultor</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- TRUST BAR -->
+    <div class="trust-bar">
+        <div class="trust-item"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/a/af/Logo_AGT.png/1200px-Logo_AGT.png" alt="AGT"></div>
+        <div class="trust-item"><h3>+500 Clientes</h3></div>
+        <div class="trust-item"><h3>Suporte 24/7</h3></div>
+        <div class="trust-item"><h3>Software Seguro</h3></div>
+    </div>
+
+    <!-- SERVIÇOS MÃE -->
+    <section class="services" id="servicos">
+        <div class="section-header reveal">
+            <h2>Nossos Serviços Principais</h2>
+            <div></div>
+            <p style="margin-top: 15px;">Soluções completas para gestão empresarial</p>
+        </div>
+
+        <div class="services-grid">
+            <!-- Card 1 -->
+            <div class="s-card reveal">
+                <i class="fas fa-desktop"></i>
+                <h3>Instalação de Softwares</h3>
+                <p>Configuramos os melhores sistemas de faturação e gestão do mercado, prontos para emitir faturas certificadas.</p>
+            </div>
+            <!-- Card 2 -->
+            <div class="s-card reveal">
+                <i class="fas fa-file-invoice-dollar"></i>
+                <h3>Gestão de Stocks</h3>
+                <p>Controle entradas, saídas e inventários de forma automática e integrada ao seu ponto de venda.</p>
+            </div>
+            <!-- Card 3 -->
+            <div class="s-card reveal">
+                <i class="fas fa-users-cog"></i>
+                <h3>Consultoria e Treino</h3>
+                <p>Treinamos a sua equipa para dominar todas as funcionalidades do software, aumentando a eficiência.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- SERVIÇO EXTRA (ANÚNCIOS) -->
+    <section class="extra-promo reveal">
+        <div class="extra-text">
+            <span style="color: var(--secondary); font-weight: bold; text-transform: uppercase;">Serviço Extra</span>
+            <h2>Venda Mais com Anúncios Profissionais</h2>
+            <p style="margin-bottom: 25px; font-size: 1.1rem; opacity: 0.8;">
+                Além da gestão do seu negócio, cuidamos das suas vendas. Criamos campanhas no Facebook e Instagram que levam clientes diretos para o seu WhatsApp.
+            </p>
+            <a href="https://apexia-oficcial.github.io/Servi-os-de-anuncios/" class="btn-main">Ver Planos de Anúncios <i class="fas fa-external-link-alt"></i></a>
+        </div>
+        <div class="extra-img">
+            <img src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&q=80&w=1000" alt="Marketing Digital">
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer id="contato">
+        <div class="footer-grid">
+            <div class="footer-col">
+                <img src="https://i.ibb.co/3s6p4mY/JSAG-TECH-LOGO.png" alt="JSAG TECH" style="height: 40px; margin-bottom: 20px; filter: brightness(0) invert(1);">
+                <p>Soluções tecnológicas focadas no crescimento do empresário Angolano.</p>
+            </div>
+            <div class="footer-col">
+                <h4>Serviços</h4>
+                <p>Softwares de Gestão</p>
+                <p>Tráfego Pago (Ads)</p>
+                <p>Licenciamento AGT</p>
+            </div>
+            <div class="footer-col">
+                <h4>Contactos</h4>
+                <p><i class="fab fa-whatsapp"></i> +244 931 352 915</p>
+                <p><i class="fas fa-envelope"></i> jsagcomercio@gmail.com</p>
+            </div>
+        </div>
+        <div style="text-align: center; border-top: 1px solid rgba(255,255,255,0.1); padding-top: 20px;">
+            <p>&copy; 2023 JSAG TECH. Todos os direitos reservados.</p>
+        </div>
+    </footer>
+
+    <!-- WhatsApp -->
+    <a href="https://wa.me/244931352915" class="whatsapp-float animate__animated animate__bounceInUp" target="_blank">
+        <i class="fab fa-whatsapp"></i>
+    </a>
+
+    <script>
+        // Função para revelar elementos ao fazer scroll
+        function reveal() {
+            var reveals = document.querySelectorAll(".reveal");
+            for (var i = 0; i < reveals.length; i++) {
+                var windowHeight = window.innerHeight;
+                var elementTop = reveals[i].getBoundingClientRect().top;
+                var elementVisible = 150;
+                if (elementTop < windowHeight - elementVisible) {
+                    reveals[i].classList.add("active");
+                }
+            }
+        }
+
+        window.addEventListener("scroll", reveal);
+
+        // Header Dinâmico
+        window.addEventListener("scroll", function() {
+            var header = document.querySelector("header");
+            header.classList.toggle("sticky", window.scrollY > 0);
+        });
+    </script>
+</body>
+</html>
