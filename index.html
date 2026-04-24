@@ -1,353 +1,305 @@
 <!DOCTYPE html>
-<html lang="pt-ao">
+<html lang="pt">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>JSAG TECH | Software de Gestão e Marketing Digital</title>
+    <title>JSAG TECH | Soluções Tecnológicas</title>
     
-    <!-- Fonts & Icons -->
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700;800&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <!-- Animate.css para efeitos rápidos -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
-
+    <!-- Ícones -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    
     <style>
+        /* --- CSS (ESTILO) --- */
         :root {
-            --primary: #003366;
-            --secondary: #00a8cc;
-            --accent: #00d2ff;
-            --dark: #050a14;
-            --light: #f4f7f6;
+            --primary: #0a2e4e;    /* Azul Tecnologia */
+            --accent: #f39c12;     /* Laranja Angola */
+            --light: #f4f7f6;      /* Fundo Clean */
+            --dark: #1a1a1a;
             --white: #ffffff;
-            --agt-gold: #c5a059;
+            --gray: #7f8c8d;
         }
 
-        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Poppins', sans-serif; }
-        body { background-color: var(--light); color: var(--dark); overflow-x: hidden; scroll-behavior: smooth; }
+        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Segoe UI', Arial, sans-serif; }
+        html { scroll-behavior: smooth; }
+        body { background-color: var(--light); color: var(--dark); }
 
-        /* --- Header & Navigation --- */
-        header {
-            position: fixed;
-            width: 100%;
-            top: 0;
-            z-index: 1000;
-            background: rgba(255, 255, 255, 0.95);
-            backdrop-filter: blur(10px);
-            padding: 15px 8%;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            box-shadow: 0 4px 20px rgba(0,0,0,0.1);
-        }
-
-        .logo img { height: 50px; transition: 0.3s; }
-        .logo img:hover { transform: scale(1.05); }
-
-        nav ul { display: flex; list-style: none; gap: 25px; align-items: center; }
-        nav ul li a { 
-            text-decoration: none; 
-            color: var(--primary); 
-            font-weight: 600; 
-            font-size: 0.9rem;
-            transition: 0.3s;
-        }
-        nav ul li a:hover { color: var(--secondary); }
+        /* Header e Nav */
+        header { background: var(--white); box-shadow: 0 2px 10px rgba(0,0,0,0.1); position: sticky; top: 0; z-index: 1000; }
+        .top-bar { background: var(--primary); color: var(--white); text-align: center; font-size: 0.85rem; padding: 6px 0; font-weight: 300; }
         
-        .nav-extra { 
-            background: var(--primary); 
-            color: white !important; 
-            padding: 8px 15px; 
-            border-radius: 5px; 
+        nav { display: flex; justify-content: space-between; align-items: center; padding: 15px 8%; max-width: 1400px; margin: 0 auto; }
+        .logo { font-size: 1.5rem; font-weight: 800; color: var(--primary); display: flex; align-items: center; }
+        .logo img { height: 45px; margin-right: 10px; }
+
+        .nav-links { display: flex; list-style: none; }
+        .nav-links li a { text-decoration: none; color: var(--primary); font-weight: 600; margin: 0 15px; transition: 0.3s; font-size: 0.95rem; }
+        .nav-links li a:hover { color: var(--accent); }
+
+        .nav-icons { display: flex; gap: 20px; align-items: center; }
+        .cart-icon { position: relative; cursor: pointer; font-size: 1.3rem; color: var(--primary); }
+        #cart-count { position: absolute; top: -8px; right: -10px; background: var(--accent); color: white; font-size: 0.7rem; padding: 2px 6px; border-radius: 50%; }
+
+        /* Hero Section */
+        .hero { 
+            height: 70vh; 
+            background: linear-gradient(rgba(10, 46, 78, 0.75), rgba(10, 46, 78, 0.75)), url('https://images.unsplash.com/photo-1519389950473-47ba0277781c?auto=format&fit=crop&w=1350&q=80');
+            background-size: cover; background-position: center;
+            display: flex; align-items: center; justify-content: center; text-align: center; color: var(--white); padding: 0 20px;
         }
+        .hero-content h1 { font-size: clamp(2rem, 5vw, 3.5rem); margin-bottom: 15px; text-transform: uppercase; letter-spacing: 2px; }
+        .hero-content p { font-size: 1.2rem; margin-bottom: 30px; font-weight: 300; }
+        .btn-main { background: var(--accent); color: var(--white); padding: 15px 35px; text-decoration: none; border-radius: 4px; font-weight: bold; transition: 0.3s; border: none; cursor: pointer; }
+        .btn-main:hover { background: #d68910; transform: scale(1.05); }
 
-        /* --- Hero Section com Efeito Zoom --- */
-        .hero {
-            height: 100vh;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            text-align: center;
-            color: white;
-            position: relative;
-            overflow: hidden;
-        }
+        /* Seções Gerais */
+        section { padding: 80px 8%; max-width: 1400px; margin: 0 auto; }
+        .section-title { text-align: center; margin-bottom: 50px; position: relative; padding-bottom: 15px; color: var(--primary); font-size: 2rem; }
+        .section-title::after { content: ''; width: 60px; height: 3px; background: var(--accent); position: absolute; bottom: 0; left: 50%; transform: translateX(-50%); }
 
-        .hero-bg {
-            position: absolute;
-            top: 0; left: 0; width: 100%; height: 100%;
-            background: linear-gradient(rgba(5, 10, 20, 0.8), rgba(5, 10, 20, 0.7)), 
-                        url('https://images.unsplash.com/photo-1551434678-e076c223a692?auto=format&fit=crop&q=80&w=2070');
-            background-size: cover;
-            background-position: center;
-            z-index: -1;
-            animation: zoomInfinite 20s infinite alternate;
-        }
+        /* Grid de Serviços */
+        .services-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 30px; }
+        .service-card { background: var(--white); padding: 40px 30px; border-radius: 8px; text-align: center; transition: 0.3s; border: 1px solid #eee; }
+        .service-card i { font-size: 2.5rem; color: var(--accent); margin-bottom: 20px; }
+        .service-card h3 { margin-bottom: 15px; color: var(--primary); }
+        .service-card p { font-size: 0.9rem; color: var(--gray); }
+        .service-card:hover { transform: translateY(-10px); box-shadow: 0 10px 30px rgba(0,0,0,0.05); }
 
-        @keyframes zoomInfinite {
-            from { transform: scale(1); }
-            to { transform: scale(1.2); }
-        }
+        /* Loja / Produtos */
+        .product-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 25px; }
+        .product-card { background: var(--white); padding: 20px; border-radius: 8px; text-align: center; border: 1px solid #eee; transition: 0.3s; display: flex; flex-direction: column; }
+        .product-card img { width: 100%; height: 180px; object-fit: contain; margin-bottom: 15px; }
+        .product-card h3 { font-size: 1rem; margin-bottom: 10px; height: 40px; overflow: hidden; }
+        .price { color: var(--accent); font-weight: 700; font-size: 1.2rem; margin-bottom: 15px; display: block; }
+        .btn-add { background: var(--primary); color: white; border: none; padding: 10px; border-radius: 4px; cursor: pointer; transition: 0.3s; }
+        .btn-add:hover { background: var(--accent); }
 
-        .hero-content h1 { font-size: 3.5rem; font-weight: 800; line-height: 1.1; margin-bottom: 20px; }
-        .hero-content p { font-size: 1.2rem; margin-bottom: 35px; opacity: 0.9; max-width: 800px; margin-left: auto; margin-right: auto;}
-        
-        .agt-badge {
-            display: inline-flex;
-            align-items: center;
-            gap: 10px;
-            background: rgba(255,255,255,0.1);
-            padding: 10px 20px;
-            border-radius: 50px;
-            border: 1px solid var(--secondary);
-            margin-bottom: 20px;
-            backdrop-filter: blur(5px);
-        }
+        /* Carrinho Lateral */
+        .side-cart { position: fixed; right: -400px; top: 0; width: 380px; height: 100%; background: var(--white); box-shadow: -5px 0 20px rgba(0,0,0,0.2); transition: 0.4s; z-index: 2000; padding: 25px; display: flex; flex-direction: column; }
+        .side-cart.active { right: 0; }
+        .cart-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px; border-bottom: 1px solid #eee; padding-bottom: 10px; }
+        .close-cart { cursor: pointer; font-size: 1.5rem; }
+        #cart-items { flex-grow: 1; overflow-y: auto; }
+        .cart-item { display: flex; justify-content: space-between; align-items: center; margin-bottom: 15px; font-size: 0.9rem; border-bottom: 1px solid #f9f9f9; padding-bottom: 8px; }
+        .cart-footer { border-top: 1px solid #eee; padding-top: 20px; }
+        .total-row { display: flex; justify-content: space-between; font-size: 1.2rem; font-weight: bold; margin-bottom: 20px; }
+        .btn-checkout { width: 100%; background: #25d366; color: white; border: none; padding: 15px; border-radius: 4px; font-weight: bold; cursor: pointer; display: flex; align-items: center; justify-content: center; gap: 10px; }
 
-        /* --- Seção de Serviços Mães (Grid Criativo) --- */
-        .services { padding: 100px 8%; background: var(--white); }
-        .section-header { text-align: center; margin-bottom: 60px; }
-        .section-header h2 { font-size: 2.5rem; color: var(--primary); margin-bottom: 10px; }
-        .section-header div { width: 80px; height: 4px; background: var(--secondary); margin: 0 auto; }
+        /* Footer */
+        footer { background: var(--primary); color: var(--white); padding: 60px 8% 20px; margin-top: 50px; }
+        .footer-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 40px; }
+        .footer-col h4 { margin-bottom: 20px; color: var(--accent); }
+        .footer-col p, .footer-col li { font-size: 0.9rem; color: #bdc3c7; list-style: none; margin-bottom: 10px; }
+        .copyright { text-align: center; margin-top: 50px; padding-top: 20px; border-top: 1px solid rgba(255,255,255,0.1); font-size: 0.8rem; color: #7f8c8d; }
 
-        .services-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 30px;
-        }
-
-        .s-card {
-            background: var(--light);
-            padding: 40px;
-            border-radius: 20px;
-            transition: 0.5s;
-            position: relative;
-            overflow: hidden;
-            border-bottom: 5px solid transparent;
-        }
-
-        .s-card:hover {
-            transform: translateY(-15px);
-            background: var(--white);
-            box-shadow: 0 20px 40px rgba(0,0,0,0.1);
-            border-bottom: 5px solid var(--secondary);
-        }
-
-        .s-card i { font-size: 3rem; color: var(--secondary); margin-bottom: 20px; display: block; }
-        .s-card h3 { margin-bottom: 15px; color: var(--primary); }
-
-        /* --- Destaque Anúncios (Serviço Extra) --- */
-        .extra-promo {
-            background: var(--dark);
-            padding: 80px 8%;
-            color: white;
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            gap: 50px;
-            flex-wrap: wrap;
-        }
-
-        .extra-text { flex: 1; min-width: 300px; }
-        .extra-text h2 { font-size: 2.2rem; margin-bottom: 20px; color: var(--accent); }
-        .extra-img { flex: 1; min-width: 300px; position: relative; }
-        .extra-img img { width: 100%; border-radius: 15px; box-shadow: 0 0 30px var(--secondary); }
-
-        .btn-main {
-            background: var(--secondary);
-            color: white;
-            padding: 15px 35px;
-            text-decoration: none;
-            border-radius: 50px;
-            font-weight: 700;
-            display: inline-block;
-            transition: 0.3s;
-            border: none;
-            cursor: pointer;
-        }
-        .btn-main:hover { background: var(--accent); transform: scale(1.05); }
-
-        /* --- Selos e Prova Social --- */
-        .trust-bar {
-            padding: 50px 8%;
-            background: #e9ecef;
-            display: flex;
-            justify-content: space-around;
-            align-items: center;
-            flex-wrap: wrap;
-            gap: 30px;
-        }
-        .trust-item { text-align: center; opacity: 0.7; transition: 0.3s; }
-        .trust-item:hover { opacity: 1; }
-        .trust-item img { height: 60px; filter: grayscale(100%); transition: 0.3s; }
-        .trust-item:hover img { filter: grayscale(0%); }
-
-        /* --- Footer --- */
-        footer { background: var(--dark); color: white; padding: 80px 8% 20px; }
-        .footer-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 40px; margin-bottom: 50px; }
-        .footer-col h4 { margin-bottom: 20px; color: var(--secondary); }
-        .footer-col p { opacity: 0.7; margin-bottom: 10px; }
-
-        .whatsapp-float {
-            position: fixed;
-            bottom: 30px;
-            right: 30px;
-            background: #25d366;
-            width: 65px; height: 65px;
-            border-radius: 50%;
-            display: flex; align-items: center; justify-content: center;
-            font-size: 35px; color: white;
-            box-shadow: 0 10px 25px rgba(0,0,0,0.3);
-            z-index: 2000;
-            transition: 0.3s;
-        }
-
-        /* Revelação no Scroll */
-        .reveal { opacity: 0; transform: translateY(30px); transition: 1s all ease; }
-        .reveal.active { opacity: 1; transform: translateY(0); }
+        /* Floating WhatsApp */
+        .whatsapp-float { position: fixed; bottom: 30px; left: 30px; background: #25d366; color: white; width: 60px; height: 60px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 30px; z-index: 1000; box-shadow: 2px 2px 10px rgba(0,0,0,0.2); }
 
         @media (max-width: 768px) {
+            .nav-links { display: none; }
             .hero-content h1 { font-size: 2.2rem; }
-            header { padding: 10px 5%; }
-            nav { display: none; } /* Pode ser adaptado para menu hambúrguer */
+            .side-cart { width: 100%; }
         }
     </style>
 </head>
 <body>
 
     <header>
-        <div class="logo">
-            <img src="https://i.ibb.co/3s6p4mY/JSAG-TECH-LOGO.png" alt="JSAG TECH">
-        </div>
+        <div class="top-bar">📍 Luanda, Angola | Atendimento 24/7 para Software e Instalações</div>
         <nav>
-            <ul>
-                <li><a href="#home">Início</a></li>
-                <li><a href="#servicos">Software</a></li>
-                <li><a href="https://apexia-oficcial.github.io/Servi-os-de-anuncios/" target="_blank" class="nav-extra">Gestão de Anúncios</a></li>
-                <li><a href="#contato">Contatos</a></li>
+            <div class="logo">
+                <img src="Logo.png" alt="JSAG TECH" onerror="this.src='https://via.placeholder.com/150x50?text=JSAG+TECH'">
+                <span>JSAG TECH</span>
+            </div>
+            <ul class="nav-links">
+                <li><a href="#inicio">Início</a></li>
+                <li><a href="#servicos">Serviços</a></li>
+                <li><a href="#loja">Loja</a></li>
+                <li><a href="#sobre">Sobre</a></li>
             </ul>
+            <div class="nav-icons">
+                <div class="cart-icon" onclick="toggleCart()">
+                    <i class="fas fa-shopping-basket"></i>
+                    <span id="cart-count">0</span>
+                </div>
+            </div>
         </nav>
     </header>
 
-    <!-- HERO -->
-    <section class="hero" id="home">
-        <div class="hero-bg"></div>
-        <div class="hero-content animate__animated animate__fadeInUp">
-            <div class="agt-badge">
-                <i class="fas fa-shield-check"></i>
-                <span>Licenciado pela AGT nº FE/8/AGT/2025</span>
+    <section id="inicio" class="hero" style="padding:0;">
+        <div class="hero-content">
+            <h1>JSAG TECH</h1>
+            <p>Conectando a sua empresa ao futuro da tecnologia e segurança.</p>
+            <a href="#loja" class="btn-main">Explorar Materiais</a>
+        </div>
+    </section>
+
+    <!-- Serviços -->
+    <section id="servicos">
+        <h2 class="section-title">Nossos Serviços Especializados</h2>
+        <div class="services-grid">
+            <div class="service-card">
+                <i class="fas fa-tools"></i>
+                <h3>Informática</h3>
+                <p>Manutenção técnica e reparação de computadores e impressoras (HP, Epson, Canon).</p>
             </div>
-            <h1>Tecnologia Inteligente para<br><span style="color: var(--secondary);">Modernizar o seu Negócio</span></h1>
-            <p>Especialistas em softwares de faturação certificados e estratégias digitais de alto impacto em Angola.</p>
-            <div style="display: flex; gap: 20px; justify-content: center; flex-wrap: wrap;">
-                <a href="#servicos" class="btn-main">Nossos Softwares</a>
-                <a href="https://wa.me/244931352915" class="btn-main" style="background: transparent; border: 2px solid white;">Falar com Consultor</a>
+            <div class="service-card">
+                <i class="fas fa-file-invoice"></i>
+                <h3>Software de Gestão</h3>
+                <p>Software certificado pela AGT para Farmácias, Escolas, Hotéis e mais 160 ramos. (95.000 Kz)</p>
+            </div>
+            <div class="service-card">
+                <i class="fas fa-video"></i>
+                <h3>Segurança CCTV</h3>
+                <p>Montagem de câmaras de vigilância, vídeo porteiros e cercas elétricas de alta precisão.</p>
             </div>
         </div>
     </section>
 
-    <!-- TRUST BAR -->
-    <div class="trust-bar">
-        <div class="trust-item"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/a/af/Logo_AGT.png/1200px-Logo_AGT.png" alt="AGT"></div>
-        <div class="trust-item"><h3>+500 Clientes</h3></div>
-        <div class="trust-item"><h3>Suporte 24/7</h3></div>
-        <div class="trust-item"><h3>Software Seguro</h3></div>
+    <!-- Loja -->
+    <section id="loja" style="background: #fff; max-width:100%;">
+        <h2 class="section-title">Materiais de Tecnologia</h2>
+        <div class="product-grid" id="product-grid" style="max-width: 1400px; margin: 0 auto;">
+            <!-- Produtos inseridos via JS abaixo -->
+        </div>
+    </section>
+
+    <!-- Carrinho Lateral -->
+    <div id="side-cart" class="side-cart">
+        <div class="cart-header">
+            <h3>🛒 Sua Encomenda</h3>
+            <span class="close-cart" onclick="toggleCart()">&times;</span>
+        </div>
+        <div id="cart-items">
+            <!-- Itens do carrinho -->
+        </div>
+        <div class="cart-footer">
+            <div class="total-row">
+                <span>Total:</span>
+                <span id="cart-total">0 Kz</span>
+            </div>
+            <p style="font-size: 0.8rem; color: var(--gray); margin-bottom: 15px;">* Pagamento via BAI, BFA ou Express.</p>
+            <button class="btn-checkout" onclick="checkout()">
+                <i class="fab fa-whatsapp"></i> Finalizar no WhatsApp
+            </button>
+        </div>
     </div>
 
-    <!-- SERVIÇOS MÃE -->
-    <section class="services" id="servicos">
-        <div class="section-header reveal">
-            <h2>Nossos Serviços Principais</h2>
-            <div></div>
-            <p style="margin-top: 15px;">Soluções completas para gestão empresarial</p>
-        </div>
-
-        <div class="services-grid">
-            <!-- Card 1 -->
-            <div class="s-card reveal">
-                <i class="fas fa-desktop"></i>
-                <h3>Instalação de Softwares</h3>
-                <p>Configuramos os melhores sistemas de faturação e gestão do mercado, prontos para emitir faturas certificadas.</p>
-            </div>
-            <!-- Card 2 -->
-            <div class="s-card reveal">
-                <i class="fas fa-file-invoice-dollar"></i>
-                <h3>Gestão de Stocks</h3>
-                <p>Controle entradas, saídas e inventários de forma automática e integrada ao seu ponto de venda.</p>
-            </div>
-            <!-- Card 3 -->
-            <div class="s-card reveal">
-                <i class="fas fa-users-cog"></i>
-                <h3>Consultoria e Treino</h3>
-                <p>Treinamos a sua equipa para dominar todas as funcionalidades do software, aumentando a eficiência.</p>
-            </div>
+    <!-- Sobre -->
+    <section id="sobre">
+        <h2 class="section-title">Sobre Nós</h2>
+        <div style="text-align: center; max-width: 800px; margin: 0 auto; color: var(--gray);">
+            <p>A <strong>JSAG TECH</strong> é especializada na prestação de serviços e venda de materiais tecnológicos e electrónicos. Vendemos todo tipo de materiais de tecnologia e eletrodomésticos, com preços extremamente atrativos para empresas e particulares.</p>
+            <br>
+            <p>Focamos na qualidade, variedade e suporte técnico contínuo para garantir que o seu negócio nunca pare.</p>
         </div>
     </section>
 
-    <!-- SERVIÇO EXTRA (ANÚNCIOS) -->
-    <section class="extra-promo reveal">
-        <div class="extra-text">
-            <span style="color: var(--secondary); font-weight: bold; text-transform: uppercase;">Serviço Extra</span>
-            <h2>Venda Mais com Anúncios Profissionais</h2>
-            <p style="margin-bottom: 25px; font-size: 1.1rem; opacity: 0.8;">
-                Além da gestão do seu negócio, cuidamos das suas vendas. Criamos campanhas no Facebook e Instagram que levam clientes diretos para o seu WhatsApp.
-            </p>
-            <a href="https://apexia-oficcial.github.io/Servi-os-de-anuncios/" class="btn-main">Ver Planos de Anúncios <i class="fas fa-external-link-alt"></i></a>
-        </div>
-        <div class="extra-img">
-            <img src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&q=80&w=1000" alt="Marketing Digital">
-        </div>
-    </section>
-
-    <!-- FOOTER -->
-    <footer id="contato">
+    <!-- Footer -->
+    <footer>
         <div class="footer-grid">
             <div class="footer-col">
-                <img src="https://i.ibb.co/3s6p4mY/JSAG-TECH-LOGO.png" alt="JSAG TECH" style="height: 40px; margin-bottom: 20px; filter: brightness(0) invert(1);">
-                <p>Soluções tecnológicas focadas no crescimento do empresário Angolano.</p>
+                <h4>JSAG TECH</h4>
+                <p>O seu parceiro tecnológico em Luanda.</p>
             </div>
             <div class="footer-col">
-                <h4>Serviços</h4>
-                <p>Softwares de Gestão</p>
-                <p>Tráfego Pago (Ads)</p>
-                <p>Licenciamento AGT</p>
+                <h4>Pagamento (IBAN)</h4>
+                <li><strong>BAI:</strong> AO06 0040 0000 3133 1973 1014 2</li>
+                <li><strong>BFA:</strong> 0006 0000 0673 1818 3016 3</li>
+                <li><strong>Express:</strong> +244 931 352 915</li>
             </div>
             <div class="footer-col">
                 <h4>Contactos</h4>
-                <p><i class="fab fa-whatsapp"></i> +244 931 352 915</p>
-                <p><i class="fas fa-envelope"></i> jsagcomercio@gmail.com</p>
+                <li><i class="fas fa-envelope"></i> jsagcomercio@gmail.com</li>
+                <li><i class="fab fa-whatsapp"></i> +244 931 352 915</li>
             </div>
         </div>
-        <div style="text-align: center; border-top: 1px solid rgba(255,255,255,0.1); padding-top: 20px;">
-            <p>&copy; 2023 JSAG TECH. Todos os direitos reservados.</p>
+        <div class="copyright">
+            &copy; 2024 JSAG TECH. Criado com foco em performance e UX.
         </div>
     </footer>
 
-    <!-- WhatsApp -->
-    <a href="https://wa.me/244931352915" class="whatsapp-float animate__animated animate__bounceInUp" target="_blank">
+    <a href="https://wa.me/244931352915" class="whatsapp-float" target="_blank">
         <i class="fab fa-whatsapp"></i>
     </a>
 
+    <!-- --- JAVASCRIPT (LÓGICA) --- -->
     <script>
-        // Função para revelar elementos ao fazer scroll
-        function reveal() {
-            var reveals = document.querySelectorAll(".reveal");
-            for (var i = 0; i < reveals.length; i++) {
-                var windowHeight = window.innerHeight;
-                var elementTop = reveals[i].getBoundingClientRect().top;
-                var elementVisible = 150;
-                if (elementTop < windowHeight - elementVisible) {
-                    reveals[i].classList.add("active");
-                }
-            }
+        const products = [
+            { id: 1, name: "CPU HP Core i5, 4GB RAM, 500GB HDD", price: 150000, img: "https://images.unsplash.com/photo-1591405351990-4726e331f141?w=400" },
+            { id: 2, name: "Computador Core i5 4ª Geração (Reutilizado)", price: 250000, img: "https://images.unsplash.com/photo-1587831990711-23ca6441447b?w=400" },
+            { id: 3, name: "Computador Core i5 6ª Geração (Reutilizado)", price: 280000, img: "https://images.unsplash.com/photo-1547082299-de196ea013d6?w=400" },
+            { id: 4, name: "Monitor Profissional", price: 55000, img: "https://images.unsplash.com/photo-1527443224154-c4a3942d3acf?w=400" },
+            { id: 5, name: "Software de Faturação AGT", price: 95000, img: "https://images.unsplash.com/photo-1554224155-6726b3ff858f?w=400" },
+            { id: 6, name: "Impressora Ticket", price: 85000, img: "https://images.unsplash.com/photo-1612815154858-60aa4c59eaa6?w=400" },
+            { id: 7, name: "Kit Teclado + Mouse HP", price: 55000, img: "https://images.unsplash.com/photo-1587829741301-dc798b83add3?w=400" },
+            { id: 8, name: "Mouse HP Óptico", price: 15000, img: "https://images.unsplash.com/photo-1527864550417-7fd91fc51a46?w=400" },
+            { id: 9, name: "Teclado HP Standard", price: 25000, img: "https://images.unsplash.com/photo-1511467687858-23d96c32e4ae?w=400" }
+        ];
+
+        let cart = [];
+
+        function renderProducts() {
+            const grid = document.getElementById('product-grid');
+            grid.innerHTML = products.map(p => `
+                <div class="product-card">
+                    <img src="${p.img}" alt="${p.name}">
+                    <h3>${p.name}</h3>
+                    <span class="price">${p.price.toLocaleString()} Kz</span>
+                    <button class="btn-add" onclick="addToCart(${p.id})">Adicionar ao Carrinho</button>
+                </div>
+            `).join('');
         }
 
-        window.addEventListener("scroll", reveal);
+        function addToCart(id) {
+            const product = products.find(p => p.id === id);
+            cart.push(product);
+            updateUI();
+            if(!document.getElementById('side-cart').classList.contains('active')) toggleCart();
+        }
 
-        // Header Dinâmico
-        window.addEventListener("scroll", function() {
-            var header = document.querySelector("header");
-            header.classList.toggle("sticky", window.scrollY > 0);
-        });
+        function updateUI() {
+            document.getElementById('cart-count').innerText = cart.length;
+            const container = document.getElementById('cart-items');
+            const total = cart.reduce((acc, item) => acc + item.price, 0);
+            
+            container.innerHTML = cart.map((item, index) => `
+                <div class="cart-item">
+                    <span>${item.name}</span>
+                    <div>
+                        <strong>${item.price.toLocaleString()} Kz</strong>
+                        <i class="fas fa-trash" style="color:#e74c3c; margin-left:10px; cursor:pointer" onclick="removeItem(${index})"></i>
+                    </div>
+                </div>
+            `).join('');
+            
+            document.getElementById('cart-total').innerText = total.toLocaleString() + ' Kz';
+        }
+
+        function removeItem(index) {
+            cart.splice(index, 1);
+            updateUI();
+        }
+
+        function toggleCart() {
+            document.getElementById('side-cart').classList.toggle('active');
+        }
+
+        function checkout() {
+            if(cart.length === 0) return alert("Seu carrinho está vazio!");
+            
+            let text = "🚀 *NOVA ENCOMENDA - JSAG TECH*%0A%0A";
+            cart.forEach((item, i) => {
+                text += `${i+1}. ${item.name} - ${item.price.toLocaleString()} Kz%0A`;
+            });
+            
+            const total = cart.reduce((acc, item) => acc + item.price, 0);
+            text += `%0A*TOTAL:* ${total.toLocaleString()} Kz%0A%0A*Pagamento:* Transferência Bancária / Express`;
+            
+            const url = `https://wa.me/244931352915?text=${text}`;
+            window.open(url, '_blank');
+        }
+
+        window.onload = renderProducts;
     </script>
 </body>
 </html>
