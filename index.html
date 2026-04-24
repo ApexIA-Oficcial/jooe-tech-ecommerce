@@ -3,163 +3,99 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>JSAG TECH | Negomil - Faturação AGT</title>
+    <title>JSAG TECH | Negomil AGT</title>
     
     <!-- FontAwesome e Google Fonts -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
     
     <style>
         :root {
             --primary: #0a2e4e;
             --accent: #f39c12;
             --white: #ffffff;
-            --light-bg: #f4f7f6;
-            --text: #333;
+            --bg: #f4f7f6;
         }
 
         * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Poppins', sans-serif; }
-        html { scroll-behavior: smooth; }
-        body { background-color: var(--light-bg); color: var(--text); overflow-x: hidden; }
+        body { background-color: var(--bg); color: #333; line-height: 1.6; }
 
-        /* CABEÇALHO */
+        /* CABEÇALHO FIXO */
         header {
-            position: fixed;
-            top: 0; width: 100%;
-            z-index: 2000;
-            background: rgba(255, 255, 255, 0.95);
-            backdrop-filter: blur(10px);
-            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            position: fixed; top: 0; width: 100%; z-index: 2000;
+            background: white; border-bottom: 2px solid var(--accent);
+            padding: 10px 0;
         }
-
         .nav-container {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 10px 8%;
-            max-width: 1400px;
-            margin: 0 auto;
+            display: flex; justify-content: space-between; align-items: center;
+            padding: 0 8%; max-width: 1400px; margin: 0 auto;
         }
-
-        .logo { display: flex; align-items: center; gap: 10px; font-weight: 800; color: var(--primary); font-size: 1.4rem; text-decoration: none; }
-        .logo img { height: 45px; }
-
-        .nav-links { display: flex; list-style: none; gap: 25px; }
-        .nav-links li a { text-decoration: none; color: var(--primary); font-weight: 600; font-size: 0.9rem; transition: 0.3s; }
-        .nav-links li a:hover { color: var(--accent); }
-
-        .cart-trigger { position: relative; cursor: pointer; font-size: 1.4rem; color: var(--primary); }
-        #cart-count { 
-            position: absolute; top: -8px; right: -12px; 
-            background: var(--accent); color: white; 
-            font-size: 0.7rem; padding: 2px 7px; border-radius: 50%;
-        }
+        .logo { font-weight: 700; color: var(--primary); font-size: 1.5rem; text-decoration: none; display: flex; align-items: center; gap: 10px; }
+        .logo img { height: 40px; }
+        
+        .cart-btn { position: relative; cursor: pointer; font-size: 1.5rem; color: var(--primary); }
+        #cart-count { position: absolute; top: -10px; right: -10px; background: var(--accent); color: white; font-size: 0.75rem; padding: 2px 6px; border-radius: 50%; }
 
         /* SLIDER (45 SEGUNDOS) */
-        .slider-container {
-            position: relative;
-            height: 85vh;
-            width: 100%;
-            overflow: hidden;
-            margin-top: 65px;
+        .slider {
+            position: relative; height: 80vh; width: 100%; overflow: hidden; margin-top: 65px;
         }
-
         .slide {
-            position: absolute;
-            top: 0; left: 0;
-            width: 100%; height: 100%;
-            opacity: 0;
-            transition: opacity 1.5s ease;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            background-size: cover;
-            background-position: center;
+            position: absolute; width: 100%; height: 100%; opacity: 0; transition: opacity 1s ease;
+            display: flex; align-items: center; justify-content: center; background-size: cover; background-position: center;
         }
+        .slide.active { opacity: 1; }
+        .overlay { position: absolute; width: 100%; height: 100%; background: rgba(0,0,0,0.6); }
+        .content { position: relative; z-index: 10; text-align: center; color: white; padding: 20px; max-width: 900px; }
+        .content h2 { font-size: 3rem; color: var(--accent); margin-bottom: 20px; }
+        .content p { font-size: 1.2rem; margin-bottom: 30px; }
 
-        .slide.active { opacity: 1; z-index: 10; }
-
-        .slide-overlay {
-            position: absolute;
-            width: 100%; height: 100%;
-            background: rgba(0,0,0,0.6);
-        }
-
-        .slide-content {
-            position: relative;
-            z-index: 20;
-            text-align: center;
-            color: white;
-            max-width: 900px;
-            padding: 20px;
-        }
-
-        .slide-content h2 { font-size: 3rem; margin-bottom: 20px; color: var(--accent); }
-        .slide-content p { font-size: 1.1rem; margin-bottom: 30px; }
-
-        .slide-features {
-            display: flex; flex-wrap: wrap; justify-content: center; gap: 15px; margin-top: 20px;
-        }
-
-        .feat-item { background: rgba(255,255,255,0.2); padding: 10px 20px; border-radius: 5px; font-size: 0.85rem; }
-
-        /* LOJA E MATERIAIS */
-        section { padding: 80px 8%; max-width: 1400px; margin: 0 auto; }
-        .section-title { text-align: center; margin-bottom: 50px; font-size: 2.2rem; color: var(--primary); }
+        /* LOJA - ESPAÇO DOS PRODUTOS */
+        .loja-section { padding: 60px 8%; max-width: 1400px; margin: 0 auto; }
+        .section-title { text-align: center; margin-bottom: 40px; font-size: 2.2rem; color: var(--primary); }
         
-        .product-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 30px; }
-        
-        .product-card { 
-            background: white; padding: 25px; border-radius: 12px; 
-            box-shadow: 0 5px 15px rgba(0,0,0,0.05); text-align: center;
-            display: flex; flex-direction: column; border: 1px solid #eee;
-        }
-        .product-card img { width: 100%; height: 180px; object-fit: contain; margin-bottom: 15px; }
-        .product-card h3 { font-size: 1rem; color: var(--primary); margin-bottom: 10px; height: 45px; overflow: hidden; }
-        .price-tag { font-size: 1.4rem; font-weight: bold; color: var(--accent); margin-bottom: 15px; display: block; }
-        
-        .btn-add { 
-            background: var(--primary); color: white; border: none; 
-            padding: 12px; border-radius: 6px; font-weight: bold; cursor: pointer; transition: 0.3s;
-        }
-        .btn-add:hover { background: var(--accent); }
-
-        /* CARRINHO LATERAL */
-        .cart-drawer {
-            position: fixed; right: -450px; top: 0;
-            width: 400px; height: 100vh;
-            background: white; z-index: 3000;
-            box-shadow: -10px 0 40px rgba(0,0,0,0.2);
-            padding: 30px; transition: 0.4s ease;
-            display: flex; flex-direction: column;
-        }
-        .cart-drawer.active { right: 0; }
-        
-        .cart-header { display: flex; justify-content: space-between; border-bottom: 1px solid #eee; padding-bottom: 15px; margin-bottom: 20px; }
-        #cart-items-list { flex-grow: 1; overflow-y: auto; }
-        .cart-item { display: flex; justify-content: space-between; margin-bottom: 10px; font-size: 0.9rem; padding-bottom: 5px; border-bottom: 1px solid #f9f9f9; }
-        
-        .cart-footer { padding-top: 20px; border-top: 2px solid #eee; }
-        .total-row { display: flex; justify-content: space-between; font-size: 1.3rem; font-weight: bold; margin-bottom: 15px; }
-        
-        .btn-wa { 
-            width: 100%; background: #25d366; color: white; border: none; 
-            padding: 15px; border-radius: 8px; font-weight: bold; cursor: pointer;
-            display: flex; align-items: center; justify-content: center; gap: 10px;
+        /* GRID QUE SEGURA OS PRODUTOS */
+        #lista-produtos { 
+            display: grid; 
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); 
+            gap: 25px; 
+            min-height: 400px; /* Garante que o espaço existe */
         }
 
-        /* Footer */
-        footer { background: var(--primary); color: white; padding: 60px 8% 20px; }
-        .footer-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 40px; }
-        .footer-col h4 { color: var(--accent); margin-bottom: 15px; }
-        .footer-col li { list-style: none; font-size: 0.85rem; color: #bdc3c7; margin-bottom: 8px; }
-
-        /* Responsivo */
-        @media (max-width: 768px) {
-            .nav-links { display: none; }
-            .cart-drawer { width: 100%; }
-            .slide-content h2 { font-size: 1.8rem; }
+        .card { 
+            background: white; padding: 20px; border-radius: 10px; 
+            box-shadow: 0 4px 10px rgba(0,0,0,0.05); text-align: center;
+            border: 1px solid #eee; transition: 0.3s;
         }
+        .card:hover { transform: translateY(-5px); border-color: var(--accent); }
+        .card img { width: 100%; height: 180px; object-fit: contain; margin-bottom: 15px; }
+        .card h3 { font-size: 1rem; color: var(--primary); margin-bottom: 10px; height: 50px; overflow: hidden; }
+        .price { font-size: 1.3rem; font-weight: 700; color: var(--accent); margin-bottom: 15px; display: block; }
+        
+        .btn-buy { 
+            background: var(--primary); color: white; border: none; width: 100%;
+            padding: 12px; border-radius: 5px; font-weight: 600; cursor: pointer;
+        }
+        .btn-buy:hover { background: var(--accent); }
+
+        /* CARRINHO */
+        .cart-panel {
+            position: fixed; right: -450px; top: 0; width: 400px; height: 100vh;
+            background: white; z-index: 3000; box-shadow: -5px 0 30px rgba(0,0,0,0.2);
+            padding: 30px; transition: 0.4s ease; display: flex; flex-direction: column;
+        }
+        .cart-panel.active { right: 0; }
+        .cart-header { display: flex; justify-content: space-between; border-bottom: 1px solid #eee; padding-bottom: 10px; margin-bottom: 20px; }
+        #cart-items { flex-grow: 1; overflow-y: auto; }
+        .cart-footer { border-top: 2px solid #eee; padding-top: 20px; }
+        .btn-wa { background: #25d366; color: white; border: none; width: 100%; padding: 15px; border-radius: 5px; cursor: pointer; font-weight: 700; margin-top: 10px; }
+
+        /* WHATSAPP FLOAT */
+        .wa-float { position: fixed; bottom: 30px; left: 30px; background: #25d366; color: white; width: 60px; height: 60px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 30px; z-index: 1000; text-decoration: none; }
+
+        footer { background: var(--primary); color: white; padding: 40px 8%; text-align: center; margin-top: 50px; }
+
+        @media (max-width: 768px) { .cart-panel { width: 100%; } .content h2 { font-size: 2rem; } }
     </style>
 </head>
 <body>
@@ -167,186 +103,88 @@
     <header>
         <nav class="nav-container">
             <a href="#" class="logo">
-                <img src="Logo.png" alt="JSAG TECH" onerror="this.src='https://via.placeholder.com/80x30?text=JSAG'">
+                <img src="Logo.png" alt="JSAG" onerror="this.src='https://via.placeholder.com/100x40?text=JSAG+TECH'">
                 <span>JSAG TECH</span>
             </a>
-            <ul class="nav-links">
-                <li><a href="#inicio">Início</a></li>
-                <li><a href="#loja">Materiais</a></li>
-                <li><a href="#contacto">Contacto</a></li>
-            </ul>
-            <div class="cart-trigger" onclick="toggleCart()">
+            <div class="cart-btn" onclick="openCart()">
                 <i class="fas fa-shopping-cart"></i>
                 <span id="cart-count">0</span>
             </div>
         </nav>
     </header>
 
-    <div id="inicio" class="slider-container">
+    <div class="slider">
         <!-- Slide 1 -->
-        <div class="slide active" style="background-image: url('https://images.unsplash.com/photo-1554224155-6726b3ff858f?w=1400')">
-            <div class="slide-overlay"></div>
-            <div class="slide-content">
+        <div class="slide active" style="background-image: url('https://images.unsplash.com/photo-1554224155-6726b3ff858f?w=1200')">
+            <div class="overlay"></div>
+            <div class="content">
                 <h2>Negomil – Faturação AGT</h2>
-                <p>O software de gestão completo e fácil de usar. Emita faturas legais aprovadas pela AGT e controle o seu stock num único lugar.</p>
-                <div class="slide-features">
-                    <div class="feat-item">📊 Controlo de Vendas</div>
-                    <div class="feat-item">📦 Gestão de Stock</div>
-                    <div class="feat-item">🔐 Faturas Certificadas</div>
-                </div>
-                <br>
-                <button class="btn-add" style="background:var(--accent); padding:15px 30px;" onclick="addToCart(100)">Comprar Software — 95.000 Kz</button>
+                <p>O sistema de gestão mais fácil de usar em Angola. Certificado pela AGT, controle o seu stock e vendas hoje mesmo.</p>
+                <button class="btn-buy" style="width: auto; padding: 15px 40px; background: var(--accent);" onclick="addItem(9)">Comprar Software — 95.000 Kz</button>
             </div>
         </div>
-
         <!-- Slide 2 -->
-        <div class="slide" style="background-image: url('https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=1400')">
-            <div class="slide-overlay"></div>
-            <div class="slide-content">
-                <h2>Tudo para o seu Escritório</h2>
-                <p>Vendemos CPUs, Monitores, Impressoras e Mouses com os melhores preços de Luanda.</p>
-                <div class="slide-features">
-                    <div class="feat-item">🎓 Formação Completa</div>
-                    <div class="feat-item">📞 Suporte Técnico</div>
-                    <div class="feat-item">⚙️ Instalação</div>
-                </div>
+        <div class="slide" style="background-image: url('https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=1200')">
+            <div class="overlay"></div>
+            <div class="content">
+                <h2>Hardware e Informática</h2>
+                <p>Computadores Core i5, i3, Impressoras e muito mais com garantia e suporte técnico.</p>
             </div>
         </div>
     </div>
 
-    <!-- LOJA DE MATERIAIS -->
-    <section id="loja">
-        <h2 class="section-title">Stock de Materiais e Equipamentos</h2>
-        <div class="product-grid" id="product-container">
-            <!-- OS PRODUTOS APARECERÃO AQUI VIA JAVASCRIPT -->
-        </div>
+    <section class="loja-section">
+        <h2 class="section-title">Stock Disponível</h2>
+        <!-- ONDE OS PRODUTOS VÃO APARECER -->
+        <div id="lista-produtos"></div>
     </section>
 
-    <!-- CARRINHO -->
-    <div id="side-cart" class="cart-drawer">
+    <div id="cart-panel" class="cart-panel">
         <div class="cart-header">
-            <h3>🛒 Carrinho</h3>
-            <span style="cursor:pointer; font-size:1.5rem" onclick="toggleCart()">&times;</span>
+            <h3>Seu Pedido</h3>
+            <span style="cursor:pointer; font-size:1.5rem" onclick="openCart()">&times;</span>
         </div>
-        <div id="cart-items-list">
-            <!-- Itens do carrinho -->
-        </div>
+        <div id="cart-items"></div>
         <div class="cart-footer">
-            <div class="total-row">
+            <div style="display:flex; justify-content:space-between; font-weight:700; font-size:1.2rem">
                 <span>Total:</span>
                 <span id="cart-total">0 Kz</span>
             </div>
-            <button class="btn-wa" onclick="checkoutWA()">
-                <i class="fab fa-whatsapp"></i> Encomendar via WhatsApp
-            </button>
+            <button class="btn-wa" onclick="finalizarWA()">Finalizar no WhatsApp</button>
         </div>
     </div>
 
+    <a href="https://wa.me/244931352915" class="wa-float" target="_blank">
+        <i class="fab fa-whatsapp"></i>
+    </a>
+
     <footer>
-        <div class="footer-grid">
-            <div class="footer-col">
-                <h4>JSAG TECH</h4>
-                <p>Especialistas em informática, software AGT e segurança eletrónica.</p>
-            </div>
-            <div class="footer-col">
-                <h4>Pagamento</h4>
-                <li><strong>BAI:</strong> AO06 0040 0000 3133 1973 1014 2</li>
-                <li><strong>BFA:</strong> 0006 0000 0673 1818 3016 3</li>
-            </div>
-            <div id="contacto" class="footer-col">
-                <h4>Contactos</h4>
-                <li><i class="fab fa-whatsapp"></i> +244 931 352 915</li>
-                <li><i class="fas fa-envelope"></i> jsagcomercio@gmail.com</li>
-            </div>
-        </div>
+        <p>BAI: AO06 0040 0000 3133 1973 1014 2 | BFA: 0006 0000 0673 1818 3016 3</p>
+        <p>&copy; 2024 JSAG TECH - Especialistas em Software AGT</p>
     </footer>
 
-    <!-- LOGICA DO SITE -->
     <script>
-        // 1. STOCK DE MATERIAIS (IDs e Preços)
-        const products = [
-            { id: 1, name: "CPU HP (Core i5, 4GB RAM, 500GB HDD)", price: 150000, img: "https://images.unsplash.com/photo-1591405351990-4726e331f141?w=400" },
-            { id: 2, name: "PC Core i5 4ª Geração (500GB/4GB)", price: 250000, img: "https://images.unsplash.com/photo-1587831990711-23ca6441447b?w=400" },
-            { id: 3, name: "PC Core i5 6ª Geração (500GB/4GB)", price: 280000, img: "https://images.unsplash.com/photo-1547082299-de196ea013d6?w=400" },
-            { id: 4, name: "Monitor Profissional HD", price: 55000, img: "https://images.unsplash.com/photo-1527443224154-c4a3942d3acf?w=400" },
-            { id: 5, name: "Impressora de Tickets", price: 85000, img: "https://images.unsplash.com/photo-1612815154858-60aa4c59eaa6?w=400" },
-            { id: 6, name: "Kit Teclado + Mouse HP", price: 55000, img: "https://images.unsplash.com/photo-1587829741301-dc798b83add3?w=400" },
-            { id: 7, name: "Teclado HP Standard", price: 25000, img: "https://images.unsplash.com/photo-1511467687858-23d96c32e4ae?w=400" },
-            { id: 8, name: "Mouse HP Óptico", price: 15000, img: "https://images.unsplash.com/photo-1527864550417-7fd91fc51a46?w=400" },
-            { id: 100, name: "Negomil – Software AGT", price: 95000, img: "https://images.unsplash.com/photo-1554224155-6726b3ff858f?w=400" }
+        // 1. DADOS DOS PRODUTOS
+        const database = [
+            { id: 1, name: "CPU HP (Core i5, 4GB RAM, 500GB HDD)", price: 150000, img: "https://images.unsplash.com/photo-1591405351990-4726e331f141?w=300" },
+            { id: 2, name: "Computador Core i5 4ª Geração", price: 250000, img: "https://images.unsplash.com/photo-1587831990711-23ca6441447b?w=300" },
+            { id: 3, name: "Computador Core i5 6ª Geração", price: 280000, img: "https://images.unsplash.com/photo-1547082299-de196ea013d6?w=300" },
+            { id: 4, name: "Computador Core i3 4ª Geração", price: 230000, img: "https://images.unsplash.com/photo-1516339901600-2e1a62d0c347?w=300" },
+            { id: 5, name: "Impressora Ticket Profissional", price: 85000, img: "https://images.unsplash.com/photo-1612815154858-60aa4c59eaa6?w=300" },
+            { id: 6, name: "Monitor HD 20'", price: 55000, img: "https://images.unsplash.com/photo-1527443224154-c4a3942d3acf?w=300" },
+            { id: 7, name: "Kit Teclado + Mouse HP", price: 55000, img: "https://images.unsplash.com/photo-1587829741301-dc798b83add3?w=300" },
+            { id: 8, name: "Teclado HP Standard", price: 25000, img: "https://images.unsplash.com/photo-1511467687858-23d96c32e4ae?w=300" },
+            { id: 9, name: "Negomil – Software AGT", price: 95000, img: "https://images.unsplash.com/photo-1554224155-6726b3ff858f?w=300" }
         ];
 
         let cart = [];
 
-        // 2. RENDERIZAR PRODUTOS NA TELA
-        function render() {
-            const container = document.getElementById('product-container');
-            container.innerHTML = products.map(p => `
-                <div class="product-card">
-                    <img src="${p.img}" alt="${p.name}">
-                    <h3>${p.name}</h3>
-                    <span class="price-tag">${p.price.toLocaleString()} Kz</span>
-                    <button class="btn-add" onclick="addToCart(${p.id})">Adicionar ao Carrinho</button>
-                </div>
-            `).join('');
-        }
-
-        // 3. LOGICA DO CARRINHO
-        function addToCart(id) {
-            const product = products.find(p => p.id === id);
-            cart.push(product);
-            updateCart();
-            toggleCart(true);
-        }
-
-        function updateCart() {
-            document.getElementById('cart-count').innerText = cart.length;
-            const list = document.getElementById('cart-items-list');
-            list.innerHTML = cart.map((p, index) => `
-                <div class="cart-item">
-                    <span>${p.name}</span>
-                    <strong>${p.price.toLocaleString()} Kz <i class="fas fa-trash" style="color:red; cursor:pointer; margin-left:8px" onclick="remove(${index})"></i></strong>
-                </div>
-            `).join('');
-            const total = cart.reduce((sum, p) => sum + p.price, 0);
-            document.getElementById('cart-total').innerText = total.toLocaleString() + " Kz";
-        }
-
-        function remove(index) {
-            cart.splice(index, 1);
-            updateCart();
-        }
-
-        function toggleCart(forceOpen = false) {
-            const drawer = document.getElementById('side-cart');
-            if (forceOpen) drawer.classList.add('active');
-            else drawer.classList.toggle('active');
-        }
-
-        function checkoutWA() {
-            if(cart.length === 0) return alert("Carrinho vazio!");
-            let msg = "*NOVA ENCOMENDA - JSAG TECH*%0A";
-            cart.forEach(p => msg += `- ${p.name} (${p.price.toLocaleString()} Kz)%0A`);
-            const total = cart.reduce((sum, p) => sum + p.price, 0);
-            msg += `%0A*TOTAL:* ${total.toLocaleString()} Kz`;
-            window.open(`https://wa.me/244931352915?text=${msg}`, '_blank');
-        }
-
-        // 4. LOGICA DO SLIDER (Troca a cada 45 segundos)
-        let slideIndex = 0;
-        const slides = document.querySelectorAll('.slide');
-
-        function nextSlide() {
-            slides[slideIndex].classList.remove('active');
-            slideIndex = (slideIndex + 1) % slides.length;
-            slides[slideIndex].classList.add('active');
-        }
-
-        // INTERVALO DE 45 SEGUNDOS (45000 ms)
-        setInterval(nextSlide, 45000);
-
-        // Inicializar produtos
-        window.onload = render;
-    </script>
-</body>
-</html>
+        // 2. FUNÇÃO QUE ESCREVE OS PRODUTOS (CHAMADA IMEDIATA)
+        function renderLoja() {
+            const container = document.getElementById('lista-produtos');
+            let html = '';
+            
+            database.forEach(p => {
+                html += `
+                    <div class="card">
+                        <img src="$
