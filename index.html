@@ -3,206 +3,188 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>JSAG TECH | Soluções Tecnológicas</title>
+    <title>JSAG TECH | Venda e Serviços Tecnológicos</title>
     
-    <!-- Ícones -->
+    <!-- Ícones FontAwesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     
     <style>
         /* --- CSS (ESTILO) --- */
         :root {
-            --primary: #0a2e4e;    /* Azul Tecnologia */
-            --accent: #f39c12;     /* Laranja Angola */
-            --light: #f4f7f6;      /* Fundo Clean */
-            --dark: #1a1a1a;
+            --primary: #0a2e4e;    /* Azul Profundo */
+            --accent: #f39c12;     /* Laranja Vibrante */
+            --light: #f4f7f6;      /* Fundo Cinza Claro */
             --white: #ffffff;
-            --gray: #7f8c8d;
+            --dark: #1a1a1a;
         }
 
-        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Segoe UI', Arial, sans-serif; }
+        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; }
         html { scroll-behavior: smooth; }
-        body { background-color: var(--light); color: var(--dark); }
+        body { background-color: var(--light); color: var(--dark); overflow-x: hidden; }
 
-        /* Header e Nav */
+        /* Header */
         header { background: var(--white); box-shadow: 0 2px 10px rgba(0,0,0,0.1); position: sticky; top: 0; z-index: 1000; }
-        .top-bar { background: var(--primary); color: var(--white); text-align: center; font-size: 0.85rem; padding: 6px 0; font-weight: 300; }
+        .top-bar { background: var(--primary); color: var(--white); text-align: center; font-size: 0.8rem; padding: 8px 0; }
         
-        nav { display: flex; justify-content: space-between; align-items: center; padding: 15px 8%; max-width: 1400px; margin: 0 auto; }
-        .logo { font-size: 1.5rem; font-weight: 800; color: var(--primary); display: flex; align-items: center; }
-        .logo img { height: 45px; margin-right: 10px; }
+        nav { display: flex; justify-content: space-between; align-items: center; padding: 10px 8%; max-width: 1400px; margin: 0 auto; }
+        .logo { display: flex; align-items: center; gap: 10px; font-weight: bold; color: var(--primary); font-size: 1.4rem; }
+        .logo img { height: 45px; }
 
-        .nav-links { display: flex; list-style: none; }
-        .nav-links li a { text-decoration: none; color: var(--primary); font-weight: 600; margin: 0 15px; transition: 0.3s; font-size: 0.95rem; }
+        .nav-links { display: flex; list-style: none; gap: 20px; }
+        .nav-links li a { text-decoration: none; color: var(--primary); font-weight: 600; font-size: 0.9rem; transition: 0.3s; }
         .nav-links li a:hover { color: var(--accent); }
 
-        .nav-icons { display: flex; gap: 20px; align-items: center; }
-        .cart-icon { position: relative; cursor: pointer; font-size: 1.3rem; color: var(--primary); }
-        #cart-count { position: absolute; top: -8px; right: -10px; background: var(--accent); color: white; font-size: 0.7rem; padding: 2px 6px; border-radius: 50%; }
+        .cart-icon { position: relative; cursor: pointer; font-size: 1.4rem; color: var(--primary); }
+        #cart-count { position: absolute; top: -10px; right: -10px; background: var(--accent); color: white; font-size: 0.7rem; padding: 2px 7px; border-radius: 50%; border: 2px solid white; }
 
         /* Hero Section */
         .hero { 
-            height: 70vh; 
-            background: linear-gradient(rgba(10, 46, 78, 0.75), rgba(10, 46, 78, 0.75)), url('https://images.unsplash.com/photo-1519389950473-47ba0277781c?auto=format&fit=crop&w=1350&q=80');
+            height: 80vh; 
+            background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), url('https://images.unsplash.com/photo-1518770660439-4636190af475?q=80&w=1470&auto=format&fit=crop');
             background-size: cover; background-position: center;
-            display: flex; align-items: center; justify-content: center; text-align: center; color: var(--white); padding: 0 20px;
+            display: flex; align-items: center; justify-content: center; text-align: center; color: white;
         }
-        .hero-content h1 { font-size: clamp(2rem, 5vw, 3.5rem); margin-bottom: 15px; text-transform: uppercase; letter-spacing: 2px; }
-        .hero-content p { font-size: 1.2rem; margin-bottom: 30px; font-weight: 300; }
-        .btn-main { background: var(--accent); color: var(--white); padding: 15px 35px; text-decoration: none; border-radius: 4px; font-weight: bold; transition: 0.3s; border: none; cursor: pointer; }
-        .btn-main:hover { background: #d68910; transform: scale(1.05); }
+        .hero-content h1 { font-size: 3.5rem; margin-bottom: 20px; }
+        .hero-content p { font-size: 1.2rem; margin-bottom: 30px; max-width: 700px; }
+        .btn-main { background: var(--accent); color: white; padding: 15px 40px; text-decoration: none; border-radius: 5px; font-weight: bold; font-size: 1.1rem; transition: 0.3s; display: inline-block; cursor: pointer; border: none; }
+        .btn-main:hover { transform: translateY(-3px); box-shadow: 0 5px 15px rgba(243, 156, 18, 0.4); }
 
-        /* Seções Gerais */
+        /* Secções */
         section { padding: 80px 8%; max-width: 1400px; margin: 0 auto; }
-        .section-title { text-align: center; margin-bottom: 50px; position: relative; padding-bottom: 15px; color: var(--primary); font-size: 2rem; }
-        .section-title::after { content: ''; width: 60px; height: 3px; background: var(--accent); position: absolute; bottom: 0; left: 50%; transform: translateX(-50%); }
+        .section-title { text-align: center; margin-bottom: 50px; font-size: 2.2rem; color: var(--primary); position: relative; }
+        .section-title::after { content: ''; width: 50px; height: 3px; background: var(--accent); position: absolute; bottom: -10px; left: 50%; transform: translateX(-50%); }
 
-        /* Grid de Serviços */
-        .services-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 30px; }
-        .service-card { background: var(--white); padding: 40px 30px; border-radius: 8px; text-align: center; transition: 0.3s; border: 1px solid #eee; }
-        .service-card i { font-size: 2.5rem; color: var(--accent); margin-bottom: 20px; }
-        .service-card h3 { margin-bottom: 15px; color: var(--primary); }
-        .service-card p { font-size: 0.9rem; color: var(--gray); }
-        .service-card:hover { transform: translateY(-10px); box-shadow: 0 10px 30px rgba(0,0,0,0.05); }
-
-        /* Loja / Produtos */
-        .product-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 25px; }
-        .product-card { background: var(--white); padding: 20px; border-radius: 8px; text-align: center; border: 1px solid #eee; transition: 0.3s; display: flex; flex-direction: column; }
-        .product-card img { width: 100%; height: 180px; object-fit: contain; margin-bottom: 15px; }
-        .product-card h3 { font-size: 1rem; margin-bottom: 10px; height: 40px; overflow: hidden; }
-        .price { color: var(--accent); font-weight: 700; font-size: 1.2rem; margin-bottom: 15px; display: block; }
-        .btn-add { background: var(--primary); color: white; border: none; padding: 10px; border-radius: 4px; cursor: pointer; transition: 0.3s; }
+        /* Grid de Produtos (Loja) */
+        .product-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 30px; }
+        .product-card { background: white; border-radius: 10px; padding: 20px; text-align: center; transition: 0.3s; border: 1px solid #eee; display: flex; flex-direction: column; justify-content: space-between; }
+        .product-card:hover { transform: translateY(-5px); box-shadow: 0 10px 25px rgba(0,0,0,0.05); }
+        .product-card img { width: 100%; height: 200px; object-fit: contain; margin-bottom: 15px; border-radius: 5px; }
+        .product-card h3 { font-size: 1rem; margin-bottom: 10px; color: var(--primary); height: 45px; overflow: hidden; }
+        .product-card .price { color: var(--accent); font-size: 1.4rem; font-weight: bold; margin-bottom: 15px; display: block; }
+        .btn-add { background: var(--primary); color: white; border: none; padding: 12px; border-radius: 5px; cursor: pointer; font-weight: bold; transition: 0.3s; width: 100%; }
         .btn-add:hover { background: var(--accent); }
 
         /* Carrinho Lateral */
-        .side-cart { position: fixed; right: -400px; top: 0; width: 380px; height: 100%; background: var(--white); box-shadow: -5px 0 20px rgba(0,0,0,0.2); transition: 0.4s; z-index: 2000; padding: 25px; display: flex; flex-direction: column; }
+        .side-cart { position: fixed; right: -450px; top: 0; width: 400px; height: 100%; background: white; box-shadow: -5px 0 30px rgba(0,0,0,0.2); transition: 0.4s; z-index: 2000; padding: 30px; display: flex; flex-direction: column; }
         .side-cart.active { right: 0; }
-        .cart-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px; border-bottom: 1px solid #eee; padding-bottom: 10px; }
-        .close-cart { cursor: pointer; font-size: 1.5rem; }
+        .cart-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 25px; border-bottom: 1px solid #eee; padding-bottom: 15px; }
+        .close-cart { cursor: pointer; font-size: 1.8rem; color: var(--primary); }
         #cart-items { flex-grow: 1; overflow-y: auto; }
-        .cart-item { display: flex; justify-content: space-between; align-items: center; margin-bottom: 15px; font-size: 0.9rem; border-bottom: 1px solid #f9f9f9; padding-bottom: 8px; }
-        .cart-footer { border-top: 1px solid #eee; padding-top: 20px; }
-        .total-row { display: flex; justify-content: space-between; font-size: 1.2rem; font-weight: bold; margin-bottom: 20px; }
-        .btn-checkout { width: 100%; background: #25d366; color: white; border: none; padding: 15px; border-radius: 4px; font-weight: bold; cursor: pointer; display: flex; align-items: center; justify-content: center; gap: 10px; }
+        .cart-item { display: flex; justify-content: space-between; margin-bottom: 15px; padding-bottom: 10px; border-bottom: 1px solid #f9f9f9; font-size: 0.9rem; }
+        .cart-footer { border-top: 2px solid #eee; padding-top: 20px; }
+        .total-box { display: flex; justify-content: space-between; font-size: 1.3rem; font-weight: bold; margin-bottom: 20px; }
+        .btn-whatsapp { background: #25d366; color: white; border: none; width: 100%; padding: 15px; border-radius: 5px; font-weight: bold; font-size: 1rem; cursor: pointer; display: flex; align-items: center; justify-content: center; gap: 10px; }
+
+        /* WhatsApp Flutuante */
+        .wa-float { position: fixed; bottom: 30px; left: 30px; background: #25d366; color: white; width: 60px; height: 60px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 30px; z-index: 1000; box-shadow: 0 4px 15px rgba(0,0,0,0.2); }
 
         /* Footer */
-        footer { background: var(--primary); color: var(--white); padding: 60px 8% 20px; margin-top: 50px; }
-        .footer-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 40px; }
-        .footer-col h4 { margin-bottom: 20px; color: var(--accent); }
-        .footer-col p, .footer-col li { font-size: 0.9rem; color: #bdc3c7; list-style: none; margin-bottom: 10px; }
-        .copyright { text-align: center; margin-top: 50px; padding-top: 20px; border-top: 1px solid rgba(255,255,255,0.1); font-size: 0.8rem; color: #7f8c8d; }
-
-        /* Floating WhatsApp */
-        .whatsapp-float { position: fixed; bottom: 30px; left: 30px; background: #25d366; color: white; width: 60px; height: 60px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 30px; z-index: 1000; box-shadow: 2px 2px 10px rgba(0,0,0,0.2); }
+        footer { background: var(--primary); color: white; padding: 60px 8% 30px; margin-top: 50px; }
+        .footer-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 40px; }
+        .footer-col h4 { color: var(--accent); margin-bottom: 20px; }
+        .footer-col p, .footer-col li { color: #bdc3c7; font-size: 0.9rem; list-style: none; margin-bottom: 10px; }
 
         @media (max-width: 768px) {
-            .nav-links { display: none; }
-            .hero-content h1 { font-size: 2.2rem; }
             .side-cart { width: 100%; }
+            .hero-content h1 { font-size: 2.2rem; }
+            nav { padding: 10px 5%; }
+            .nav-links { display: none; }
         }
     </style>
 </head>
 <body>
 
     <header>
-        <div class="top-bar">📍 Luanda, Angola | Atendimento 24/7 para Software e Instalações</div>
+        <div class="top-bar">📍 Entregas e Serviços Técnicos em Luanda | WhatsApp: +244 931 352 915</div>
         <nav>
             <div class="logo">
-                <img src="Logo.png" alt="JSAG TECH" onerror="this.src='https://via.placeholder.com/150x50?text=JSAG+TECH'">
+                <img src="Logo.png" alt="JSAG TECH" onerror="this.src='https://via.placeholder.com/100x40?text=JSAG+TECH'">
                 <span>JSAG TECH</span>
             </div>
             <ul class="nav-links">
                 <li><a href="#inicio">Início</a></li>
+                <li><a href="#loja">Loja de Materiais</a></li>
                 <li><a href="#servicos">Serviços</a></li>
-                <li><a href="#loja">Loja</a></li>
-                <li><a href="#sobre">Sobre</a></li>
+                <li><a href="#contacto">Contacto</a></li>
             </ul>
-            <div class="nav-icons">
-                <div class="cart-icon" onclick="toggleCart()">
-                    <i class="fas fa-shopping-basket"></i>
-                    <span id="cart-count">0</span>
-                </div>
+            <div class="cart-icon" onclick="toggleCart()">
+                <i class="fas fa-shopping-cart"></i>
+                <span id="cart-count">0</span>
             </div>
         </nav>
     </header>
 
-    <section id="inicio" class="hero" style="padding:0;">
+    <section id="inicio" class="hero">
         <div class="hero-content">
-            <h1>JSAG TECH</h1>
-            <p>Conectando a sua empresa ao futuro da tecnologia e segurança.</p>
+            <h1>Excelência em Tecnologia</h1>
+            <p>Venda de equipamentos informáticos, software certificado pela AGT e sistemas de segurança.</p>
+            <!-- BOTÃO EXPLORAR: Agora aponta corretamente para a seção Loja -->
             <a href="#loja" class="btn-main">Explorar Materiais</a>
         </div>
     </section>
 
-    <!-- Serviços -->
-    <section id="servicos">
-        <h2 class="section-title">Nossos Serviços Especializados</h2>
-        <div class="services-grid">
-            <div class="service-card">
-                <i class="fas fa-tools"></i>
-                <h3>Informática</h3>
-                <p>Manutenção técnica e reparação de computadores e impressoras (HP, Epson, Canon).</p>
-            </div>
-            <div class="service-card">
-                <i class="fas fa-file-invoice"></i>
-                <h3>Software de Gestão</h3>
-                <p>Software certificado pela AGT para Farmácias, Escolas, Hotéis e mais 160 ramos. (95.000 Kz)</p>
-            </div>
-            <div class="service-card">
-                <i class="fas fa-video"></i>
-                <h3>Segurança CCTV</h3>
-                <p>Montagem de câmaras de vigilância, vídeo porteiros e cercas elétricas de alta precisão.</p>
+    <!-- SECÇÃO DA LOJA (STOCKS) -->
+    <section id="loja">
+        <h2 class="section-title">Nossos Materiais em Venda</h2>
+        <div class="product-grid" id="product-list">
+            <!-- Os produtos vão aparecer aqui via JavaScript -->
+        </div>
+    </section>
+
+    <!-- SECÇÃO DE SERVIÇOS -->
+    <section id="servicos" style="background: #fff; max-width: 100%;">
+        <div style="max-width: 1400px; margin: 0 auto; padding: 0 8%;">
+            <h2 class="section-title">Serviços Profissionais</h2>
+            <div class="product-grid">
+                <div class="product-card">
+                    <i class="fas fa-laptop-code" style="font-size: 3rem; color: var(--accent); margin-bottom: 20px;"></i>
+                    <h3>Manutenção de Computadores</h3>
+                    <p>Reparação de Hardware e Software para empresas e particulares.</p>
+                </div>
+                <div class="product-card">
+                    <i class="fas fa-file-invoice-dollar" style="font-size: 3rem; color: var(--accent); margin-bottom: 20px;"></i>
+                    <h3>Software de Faturação</h3>
+                    <p>Sistemas certificados pela AGT para Farmácias, Escolas e Hotéis.</p>
+                </div>
+                <div class="product-card">
+                    <i class="fas fa-video" style="font-size: 3rem; color: var(--accent); margin-bottom: 20px;"></i>
+                    <h3>Instalação de CCTV</h3>
+                    <p>Câmaras de vigilância, cercas elétricas e vídeo porteiros.</p>
+                </div>
             </div>
         </div>
     </section>
 
-    <!-- Loja -->
-    <section id="loja" style="background: #fff; max-width:100%;">
-        <h2 class="section-title">Materiais de Tecnologia</h2>
-        <div class="product-grid" id="product-grid" style="max-width: 1400px; margin: 0 auto;">
-            <!-- Produtos inseridos via JS abaixo -->
-        </div>
-    </section>
-
-    <!-- Carrinho Lateral -->
+    <!-- CARRINHO LATERAL -->
     <div id="side-cart" class="side-cart">
         <div class="cart-header">
-            <h3>🛒 Sua Encomenda</h3>
+            <h3>🛒 Seu Carrinho</h3>
             <span class="close-cart" onclick="toggleCart()">&times;</span>
         </div>
-        <div id="cart-items">
-            <!-- Itens do carrinho -->
+        <div id="cart-items-container">
+            <!-- Itens adicionados aparecem aqui -->
         </div>
         <div class="cart-footer">
-            <div class="total-row">
+            <div class="total-box">
                 <span>Total:</span>
-                <span id="cart-total">0 Kz</span>
+                <span id="cart-total-price">0 Kz</span>
             </div>
-            <p style="font-size: 0.8rem; color: var(--gray); margin-bottom: 15px;">* Pagamento via BAI, BFA ou Express.</p>
-            <button class="btn-checkout" onclick="checkout()">
-                <i class="fab fa-whatsapp"></i> Finalizar no WhatsApp
+            <p style="font-size: 0.8rem; color: #7f8c8d; margin-bottom: 15px;">* Pagamento via Transferência (BAI/BFA) ou Express.</p>
+            <button class="btn-whatsapp" onclick="sendWhatsApp()">
+                <i class="fab fa-whatsapp"></i> Finalizar Pedido
             </button>
         </div>
     </div>
 
-    <!-- Sobre -->
-    <section id="sobre">
-        <h2 class="section-title">Sobre Nós</h2>
-        <div style="text-align: center; max-width: 800px; margin: 0 auto; color: var(--gray);">
-            <p>A <strong>JSAG TECH</strong> é especializada na prestação de serviços e venda de materiais tecnológicos e electrónicos. Vendemos todo tipo de materiais de tecnologia e eletrodomésticos, com preços extremamente atrativos para empresas e particulares.</p>
-            <br>
-            <p>Focamos na qualidade, variedade e suporte técnico contínuo para garantir que o seu negócio nunca pare.</p>
-        </div>
-    </section>
-
-    <!-- Footer -->
-    <footer>
+    <!-- RODAPÉ -->
+    <footer id="contacto">
         <div class="footer-grid">
             <div class="footer-col">
                 <h4>JSAG TECH</h4>
-                <p>O seu parceiro tecnológico em Luanda.</p>
+                <p>Prestação de serviços e venda de materiais eletrónicos com os melhores preços de Luanda.</p>
             </div>
             <div class="footer-col">
-                <h4>Pagamento (IBAN)</h4>
+                <h4>Pagamentos</h4>
                 <li><strong>BAI:</strong> AO06 0040 0000 3133 1973 1014 2</li>
                 <li><strong>BFA:</strong> 0006 0000 0673 1818 3016 3</li>
                 <li><strong>Express:</strong> +244 931 352 915</li>
@@ -213,34 +195,39 @@
                 <li><i class="fab fa-whatsapp"></i> +244 931 352 915</li>
             </div>
         </div>
-        <div class="copyright">
-            &copy; 2024 JSAG TECH. Criado com foco em performance e UX.
+        <div style="text-align: center; margin-top: 40px; font-size: 0.8rem; color: #7f8c8d; border-top: 1px solid rgba(255,255,255,0.1); padding-top: 20px;">
+            &copy; 2024 JSAG TECH - Todos os direitos reservados.
         </div>
     </footer>
 
-    <a href="https://wa.me/244931352915" class="whatsapp-float" target="_blank">
+    <a href="https://wa.me/244931352915" class="wa-float" target="_blank">
         <i class="fab fa-whatsapp"></i>
     </a>
 
-    <!-- --- JAVASCRIPT (LÓGICA) --- -->
+    <!-- --- JAVASCRIPT --- -->
     <script>
-        const products = [
-            { id: 1, name: "CPU HP Core i5, 4GB RAM, 500GB HDD", price: 150000, img: "https://images.unsplash.com/photo-1591405351990-4726e331f141?w=400" },
-            { id: 2, name: "Computador Core i5 4ª Geração (Reutilizado)", price: 250000, img: "https://images.unsplash.com/photo-1587831990711-23ca6441447b?w=400" },
-            { id: 3, name: "Computador Core i5 6ª Geração (Reutilizado)", price: 280000, img: "https://images.unsplash.com/photo-1547082299-de196ea013d6?w=400" },
-            { id: 4, name: "Monitor Profissional", price: 55000, img: "https://images.unsplash.com/photo-1527443224154-c4a3942d3acf?w=400" },
-            { id: 5, name: "Software de Faturação AGT", price: 95000, img: "https://images.unsplash.com/photo-1554224155-6726b3ff858f?w=400" },
-            { id: 6, name: "Impressora Ticket", price: 85000, img: "https://images.unsplash.com/photo-1612815154858-60aa4c59eaa6?w=400" },
+        // 1. Dados dos Produtos (Teu Stock)
+        const myStock = [
+            { id: 1, name: "CPU HP (Core i5, 4GB RAM, 500GB HDD)", price: 150000, img: "https://images.unsplash.com/photo-1591405351990-4726e331f141?w=400" },
+            { id: 2, name: "Computador Core i5 4ª Geração (500GB/4GB)", price: 250000, img: "https://images.unsplash.com/photo-1587831990711-23ca6441447b?w=400" },
+            { id: 3, name: "Computador Core i5 6ª Geração (500GB/4GB)", price: 280000, img: "https://images.unsplash.com/photo-1547082299-de196ea013d6?w=400" },
+            { id: 4, name: "Computador Core i3 4ª Geração (500GB/4GB)", price: 230000, img: "https://images.unsplash.com/photo-1516339901600-2e1a62d0c347?w=400" },
+            { id: 5, name: "Impressora Ticket Profissional", price: 85000, img: "https://images.unsplash.com/photo-1612815154858-60aa4c59eaa6?w=400" },
+            { id: 6, name: "Monitor HD 20'", price: 55000, img: "https://images.unsplash.com/photo-1527443224154-c4a3942d3acf?w=400" },
             { id: 7, name: "Kit Teclado + Mouse HP", price: 55000, img: "https://images.unsplash.com/photo-1587829741301-dc798b83add3?w=400" },
-            { id: 8, name: "Mouse HP Óptico", price: 15000, img: "https://images.unsplash.com/photo-1527864550417-7fd91fc51a46?w=400" },
-            { id: 9, name: "Teclado HP Standard", price: 25000, img: "https://images.unsplash.com/photo-1511467687858-23d96c32e4ae?w=400" }
+            { id: 8, name: "Software de Faturação Certificado AGT", price: 95000, img: "https://images.unsplash.com/photo-1554224155-6726b3ff858f?w=400" },
+            { id: 9, name: "Teclado HP Standard", price: 25000, img: "https://images.unsplash.com/photo-1511467687858-23d96c32e4ae?w=400" },
+            { id: 10, name: "Mouse HP Óptico", price: 15000, img: "https://images.unsplash.com/photo-1527864550417-7fd91fc51a46?w=400" }
         ];
 
         let cart = [];
 
-        function renderProducts() {
-            const grid = document.getElementById('product-grid');
-            grid.innerHTML = products.map(p => `
+        // 2. Função para carregar os produtos na tela
+        function loadProducts() {
+            const list = document.getElementById('product-list');
+            if(!list) return;
+
+            list.innerHTML = myStock.map(p => `
                 <div class="product-card">
                     <img src="${p.img}" alt="${p.name}">
                     <h3>${p.name}</h3>
@@ -250,56 +237,66 @@
             `).join('');
         }
 
+        // 3. Adicionar ao Carrinho
         function addToCart(id) {
-            const product = products.find(p => p.id === id);
-            cart.push(product);
-            updateUI();
-            if(!document.getElementById('side-cart').classList.contains('active')) toggleCart();
+            const item = myStock.find(p => p.id === id);
+            cart.push(item);
+            updateCartUI();
+            
+            // Abre o carrinho automaticamente para mostrar que funcionou
+            document.getElementById('side-cart').classList.add('active');
         }
 
-        function updateUI() {
-            document.getElementById('cart-count').innerText = cart.length;
-            const container = document.getElementById('cart-items');
-            const total = cart.reduce((acc, item) => acc + item.price, 0);
+        // 4. Atualizar a Interface do Carrinho
+        function updateCartUI() {
+            const count = document.getElementById('cart-count');
+            const container = document.getElementById('cart-items-container');
+            const totalDisplay = document.getElementById('cart-total-price');
             
-            container.innerHTML = cart.map((item, index) => `
+            count.innerText = cart.length;
+            
+            container.innerHTML = cart.map((p, index) => `
                 <div class="cart-item">
-                    <span>${item.name}</span>
-                    <div>
-                        <strong>${item.price.toLocaleString()} Kz</strong>
-                        <i class="fas fa-trash" style="color:#e74c3c; margin-left:10px; cursor:pointer" onclick="removeItem(${index})"></i>
-                    </div>
+                    <span>${p.name}</span>
+                    <span><strong>${p.price.toLocaleString()} Kz</strong> 
+                    <i class="fas fa-times" onclick="removeItem(${index})" style="color:red; margin-left:10px; cursor:pointer;"></i></span>
                 </div>
             `).join('');
-            
-            document.getElementById('cart-total').innerText = total.toLocaleString() + ' Kz';
+
+            const total = cart.reduce((sum, item) => sum + item.price, 0);
+            totalDisplay.innerText = total.toLocaleString() + " Kz";
         }
 
         function removeItem(index) {
             cart.splice(index, 1);
-            updateUI();
+            updateCartUI();
         }
 
         function toggleCart() {
             document.getElementById('side-cart').classList.toggle('active');
         }
 
-        function checkout() {
-            if(cart.length === 0) return alert("Seu carrinho está vazio!");
-            
-            let text = "🚀 *NOVA ENCOMENDA - JSAG TECH*%0A%0A";
-            cart.forEach((item, i) => {
-                text += `${i+1}. ${item.name} - ${item.price.toLocaleString()} Kz%0A`;
+        // 5. Enviar para WhatsApp
+        function sendWhatsApp() {
+            if(cart.length === 0) {
+                alert("O carrinho está vazio!");
+                return;
+            }
+
+            let msg = "*PEDIDO DE COMPRA - JSAG TECH*%0A%0A";
+            cart.forEach((p, i) => {
+                msg += `${i+1}. ${p.name} - ${p.price.toLocaleString()} Kz%0A`;
             });
-            
-            const total = cart.reduce((acc, item) => acc + item.price, 0);
-            text += `%0A*TOTAL:* ${total.toLocaleString()} Kz%0A%0A*Pagamento:* Transferência Bancária / Express`;
-            
-            const url = `https://wa.me/244931352915?text=${text}`;
-            window.open(url, '_blank');
+
+            const total = cart.reduce((sum, item) => sum + item.price, 0);
+            msg += `%0A*TOTAL:* ${total.toLocaleString()} Kz`;
+            msg += `%0A%0A_Favor confirmar disponibilidade e dados para pagamento._`;
+
+            window.open(`https://wa.me/244931352915?text=${msg}`, '_blank');
         }
 
-        window.onload = renderProducts;
+        // Garante que os produtos carregam assim que a página abrir
+        document.addEventListener('DOMContentLoaded', loadProducts);
     </script>
 </body>
 </html>
